@@ -11,4 +11,8 @@ public class InputPin {
 	public int getIndex() {
 		return index;
 	}
+	
+	public void setSource(Source source) { //source = switch ou saida de uma porta
+		this.source = source;
+	}
 }

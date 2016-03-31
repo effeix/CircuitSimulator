@@ -1,14 +1,10 @@
 package model;
 
 public class Switch implements Source {
-	private boolean state;
+	private boolean state = false;
 	
-	public void setState(boolean state) {
-		this.state = state;
-	}
-	
-	public void setSource(Source source) {
-		//
+	public void toggleState() {
+		this.state = !this.state;
 	}
 	
 	@Override
