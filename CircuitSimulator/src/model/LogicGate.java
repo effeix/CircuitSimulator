@@ -1,5 +1,5 @@
 package model;
 
-public class LogicGate {
+abstract class LogicGate implements Source, Drain {
 
 }

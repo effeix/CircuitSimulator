@@ -1,5 +1,5 @@
 package model;
 
-public class OrGate {
+public class OrGate extends LogicGate {
 
 }

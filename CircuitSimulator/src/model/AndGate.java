@@ -1,5 +1,5 @@
 package model;
 
-public class AndGate {
+public class AndGate extends LogicGate {
 
 }

@@ -1,5 +1,5 @@
 package model;
 
-public class NotGate {
+public class NotGate extends LogicGate {
 
 }

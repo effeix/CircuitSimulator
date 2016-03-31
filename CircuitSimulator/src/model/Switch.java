@@ -1,5 +1,5 @@
 package model;
 
-public class Switch {
+public class Switch implements Source {
 
 }
