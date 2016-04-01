@@ -10,4 +10,12 @@ public class AndGate extends LogicGate {
 		boolean B = pinB.getSource().getOutputValue(pinB.getIndex());
 		return A && B;
 	}
+	
+	public void setpinA(InputPin PinA){
+		this.pinA = PinA;
+	}
+	
+	public void setpinB(InputPin PinB){
+		this.pinB = PinB;
+	}
 }

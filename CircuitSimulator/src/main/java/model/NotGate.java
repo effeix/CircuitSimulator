@@ -1,11 +1,15 @@
 package model;
 
 public class NotGate extends LogicGate {
-	private InputPin pinA;
+	private InputPin pin;
 	
 	@Override
 	public boolean getOutputValue(int index) {
-		boolean A = pinA.getSource().getOutputValue(pinA.getIndex());
+		boolean A = pin.getSource().getOutputValue(pin.getIndex());
 		return !A;
+	}
+	
+	public void setPin(InputPin Pin){
+		this.pin = Pin;
 	}
 }
