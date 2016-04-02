@@ -24,18 +24,16 @@ public class XorGate extends LogicGate {
 		not1.setPin(pinA);
 		not2.setPin(pinB);
 		
-		//entradas da xor conectadas nas portas and
-		and1.setpinA(pinA);
-		and2.setpinA(pinB);
-		
 		//Criando pinos das saídas das portas not
 		InputPin outNot1 = new InputPin();
 		InputPin outNot2 = new InputPin();
 		
 		
-		//conectando as saídas das portas not nas entradas das portas and
-		and1.setpinB(outNot2);
-		and2.setpinB(outNot1);
+		//entradas da xor
+		
+		and1.setPin(pinA,outNot2);
+		and2.setPin(pinB,outNot1);
+
 		
 		//Criando pinos das saídas das portas and
 		
