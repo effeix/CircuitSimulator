@@ -14,48 +14,50 @@ public class FullAdderGate extends LogicGate {
 
 	@Override
 	public boolean getOutputValue(int index) {
-
+		
 		boolean[] out = new boolean[2];
 
-		//Criando as portas
+		//criando as portas lógicas
 
-		HalfAdderGate half_adder1 = new HalfAdderGate();
-		HalfAdderGate half_adder2 = new HalfAdderGate();
+		XorGate xor1 = new XorGate();
+		XorGate xor2 = new XorGate();
+		AndGate and1 = new AndGate();
+		AndGate and2 = new AndGate();
 		OrGate or = new OrGate();
 
-		//Criando os pinos e atribuindo os valores do primeiro HalfAdder
-		
-		half_adder1.setPin(faPinA,faPinB);
+		//Xor1
 
-		InputPin sum_HA1 = new InputPin();
-		InputPin carry_HA1 = new InputPin();
+		xor1.setPin(faPinA,faPinB);
+		InputPin outXor1 = new InputPin();
+		outXor1.setSource(xor1);
 
-		sum_HA1.setIndex(0);
-		carry_HA1.setIndex(1);
+		//Xor2x
 
-		sum_HA1.setSource(half_adder1);
-		carry_HA1.setSource(half_adder1);
+		xor2.setPin(outXor1,faPinC);
+		InputPin outXor2 = new InputPin();
+		outXor2.setSource(xor2);
 
-		//Criando os pinos e atribuindo os valores do segundo HalfAdder
+		//And1
 
-		half_adder2.setPin(sum_HA1,faPinC);
+		and1.setPin(faPinC,outXor1);
+		InputPin outAnd1 = new InputPin();
+		outAnd1.setSource(and1);
 
-		InputPin sum_HA2 = new InputPin();
-		InputPin carry_HA2 = new InputPin();
+		//And2
 
-		sum_HA2.setIndex(0);
-		carry_HA2.setIndex(1);
-
-		sum_HA2.setSource(half_adder2);
-		carry_HA2.setSource(half_adder2);
+		and2.setPin(faPinB,faPinA);
+		InputPin outAnd2 = new InputPin();
+		outAnd2.setSource(and2);
 
 		//Or
 
-		or.setPin(carry_HA1,carry_HA2);
+		or.setPin(outAnd1,outAnd2);
+		InputPin outOr = new InputPin();
+		outOr.setSource(or);
 
-		//Array de saídas do FullAdder
+		//array de saídas
 
-		out[0] = half_adder2.getOutputValue(0);
+		out[0] = xor2.getOutputValue(0);
 		out[1] = or.getOutputValue(0);
 
 		return out[index];
