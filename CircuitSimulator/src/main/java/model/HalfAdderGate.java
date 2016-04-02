@@ -13,18 +13,18 @@ public class HalfAdderGate extends LogicGate {
 	@Override
 	public boolean getOutputValue(int index) {
 
-	XorGate xor = new XorGate();
-	AndGate and = new AndGate();
+		XorGate xor = new XorGate();
+		AndGate and = new AndGate();
 
-	xor.setPin(haPinA,haPinB);
-	and.setPin(haPinA,haPinB);
+		xor.setPin(haPinA,haPinB);
+		and.setPin(haPinA,haPinB);
 
-	boolean[] out = new boolean[2];
+		boolean[] out = new boolean[2];
 
-	out[0] = xor.getOutputValue(0);
-	out[1] = and.getOutputValue(0);
+		out[0] = xor.getOutputValue(0);
+		out[1] = and.getOutputValue(0);
 
-	return out[index];
+		return out[index];
 
 	}	
 
