@@ -30,11 +30,11 @@ public class FullAdderGate extends LogicGate {
 		InputPin sum_HA1 = new InputPin();
 		InputPin carry_HA1 = new InputPin();
 
-		sum_HA1.setIndex(0);
-		carry_HA1.setIndex(1);
-
 		sum_HA1.setSource(half_adder1);
 		carry_HA1.setSource(half_adder1);
+		
+		sum_HA1.setIndex(0);
+		carry_HA1.setIndex(1);
 
 		//Criando os pinos e atribuindo os valores do segundo HalfAdder
 
@@ -43,11 +43,11 @@ public class FullAdderGate extends LogicGate {
 		InputPin sum_HA2 = new InputPin();
 		InputPin carry_HA2 = new InputPin();
 
-		sum_HA2.setIndex(0);
-		carry_HA2.setIndex(1);
-
 		sum_HA2.setSource(half_adder2);
 		carry_HA2.setSource(half_adder2);
+		
+		sum_HA1.setIndex(0);
+		carry_HA1.setIndex(1);
 
 		//Or
 
