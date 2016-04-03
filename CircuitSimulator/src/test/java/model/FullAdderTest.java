@@ -73,7 +73,7 @@ public class FullAdderTest {
 		InputPin pinB = new InputPin();
 		pinB.setSource(switch2);
 		InputPin pinC = new InputPin();
-		pinB.setSource(switch3);
+		pinC.setSource(switch3);
 		fullAdder.setPin(pinA, pinB, pinC);
 		
 		//Test if the output is false
@@ -81,7 +81,7 @@ public class FullAdderTest {
 		Assert.assertFalse(fullAdder.getOutputValue(1)); //Carry
 	}
 	
-	//@Test
+	@Test
 	public void Input011() {
 		//Components for the circuit
 		HalfAdderGate halfAdder = new HalfAdderGate();
@@ -104,7 +104,7 @@ public class FullAdderTest {
 		Assert.assertTrue(halfAdder.getOutputValue(1)); //Carry
 	}
 	
-	//@Test
+	@Test
 	public void Input100() {
 		//Components for the circuit
 		HalfAdderGate halfAdder = new HalfAdderGate();
@@ -127,7 +127,7 @@ public class FullAdderTest {
 		Assert.assertTrue(halfAdder.getOutputValue(1)); //Carry
 	}
 	
-	//@Test
+	@Test
 	public void Input101() {
 		//Components for the circuit
 		HalfAdderGate halfAdder = new HalfAdderGate();
@@ -150,7 +150,7 @@ public class FullAdderTest {
 		Assert.assertTrue(halfAdder.getOutputValue(1)); //Carry
 	}
 	
-	//@Test
+	@Test
 	public void Input110() {
 		//Components for the circuit
 		HalfAdderGate halfAdder = new HalfAdderGate();
@@ -173,7 +173,7 @@ public class FullAdderTest {
 		Assert.assertTrue(halfAdder.getOutputValue(1)); //Carry
 	}
 	
-	//@Test
+	@Test
 	public void Input111() {
 		//Components for the circuit
 		HalfAdderGate halfAdder = new HalfAdderGate();
