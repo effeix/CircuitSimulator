@@ -7,16 +7,19 @@ import javax.swing.*;
 
 public class Panel extends JPanel {
 	static final long serialVersionUID = 475623984138162L;
+	JCheckBox switch1 = new JCheckBox("Switch 1");
+	JCheckBox switch2 = new JCheckBox("Switch 2");
+	JPanel switchPanel = new JPanel(new GridLayout(2, 0));
+	
+	public Panel() {
+		super(new BorderLayout());
+		switchPanel.add(switch1);
+		switchPanel.add(switch2);
+		this.add(switchPanel, BorderLayout.LINE_START);
+	}
 
 	public void paint(Graphics g) {
 		Graphics2D g2 = (Graphics2D) g;
-		
-		//Buttons on/off
-		Image on = new ImageIcon("src/imgs/off.png").getImage();
-		Image off = new ImageIcon("src/imgs/off.png").getImage();
-		
-		g.drawImage(on, 100, 100, null);
-		g.drawImage(off, 100, 200, null);
 		
 		//Draw AndGate
 		AndGatePainter p = new AndGatePainter();
