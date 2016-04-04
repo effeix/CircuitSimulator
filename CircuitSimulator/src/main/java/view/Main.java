@@ -3,6 +3,8 @@ package view;
 import java.awt.Dimension;
 import javax.swing.JFrame;
 
+import controller.InputHandler;
+
 public class Main {
 	private final static int HEIGHT = 400;
 	private final static int WIDTH = 750;
@@ -11,6 +13,7 @@ public class Main {
 		
 		javax.swing.SwingUtilities.invokeLater(new Runnable() {
 	        public void run() {
+	        	InputHandler i = new InputHandler();
 	            Panel panel = new Panel();
 	            JFrame frame = new JFrame("Labyrinth Generator");
 	            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
