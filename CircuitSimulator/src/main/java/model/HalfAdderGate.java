@@ -26,6 +26,12 @@ public class HalfAdderGate extends LogicGate {
 
 		return out[index];
 
+	}
+
+	@Override
+	public InputPin getInputPin(int index) {
+		// TODO Auto-generated method stub
+		return null;
 	}	
 
 

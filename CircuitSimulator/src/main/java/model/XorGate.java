@@ -48,6 +48,12 @@ public class XorGate extends LogicGate {
 		
 		//Return the output of the OrGate (XorGate output)
 		return or.getOutputValue(0);
+	}
+
+	@Override
+	public InputPin getInputPin(int index) {
+		// TODO Auto-generated method stub
+		return null;
 	}	
 }
 

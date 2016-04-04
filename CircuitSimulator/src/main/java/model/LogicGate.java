@@ -1,5 +1,7 @@
 package model;
 
+import java.util.ArrayList;
+
 abstract class LogicGate implements Source, Drain {
-	private InputPin inputPin;	
+	protected ArrayList <InputPin> pins = new ArrayList <>();
 }
