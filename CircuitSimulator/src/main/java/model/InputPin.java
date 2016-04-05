@@ -4,6 +4,9 @@ public class InputPin {
 	Source source;
 	int index;
 	
+	public InputPin (Source source) {
+		this.source = source;
+	}
 	public Source getSource() {
 		return source;
 	}

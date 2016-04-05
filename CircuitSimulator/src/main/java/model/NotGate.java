@@ -3,13 +3,13 @@ package model;
 public class NotGate extends LogicGate {
 	private InputPin pin;
 	
-	public void setPin(InputPin pin) {
-		this.pin = pin;
-	} 
+	public NotGate(InputPin input) {
+		pins.add(input);
+	}
 	
 	@Override
 	public boolean getOutputValue(int index) {
-		boolean npin = pin.getSource().getOutputValue(pin.getIndex());
+		boolean npin = pins.get(0).getSource().getOutputValue(index);
 		return !npin;
 	}
 
@@ -17,5 +17,10 @@ public class NotGate extends LogicGate {
 	public InputPin getInputPin(int index) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	public void setPin(InputPin inputPin) {
+		pin = inputPin;
+		
 	}
 }

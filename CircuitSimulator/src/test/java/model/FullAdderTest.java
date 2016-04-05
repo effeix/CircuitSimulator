@@ -9,22 +9,15 @@ public class FullAdderTest {
 
 	@Test
 	public void Input000() {
-		//Since our switches objects start at false, we don't need to toggle their state to test the 0 x 0 case
-		
-		//Components for the circuit
-		FullAdderGate fullAdder = new FullAdderGate();
 		Switch switch1 = new Switch();
 		Switch switch2 = new Switch();
 		Switch switch3 = new Switch();
+		InputPin input1 = new InputPin(switch1);
+	    InputPin input2 = new InputPin(switch2);
+	    InputPin input3 = new InputPin(switch3);
 		
-		//Create and set input objects
-		InputPin pinA = new InputPin();
-		pinA.setSource(switch1);
-		InputPin pinB = new InputPin();
-		pinB.setSource(switch2);
-		InputPin pinC = new InputPin();
-		pinC.setSource(switch3);
-		fullAdder.setPin(pinA, pinB, pinC);
+		//Components for the circuit
+		LogicGate fullAdder = new FullAdderGate(input1, input2, input3);
 		
 		//Test if outputs are false
 		Assert.assertFalse(fullAdder.getOutputValue(0)); //Sum
@@ -33,167 +26,142 @@ public class FullAdderTest {
 	
 	@Test
 	public void Input001() {
-		//Components for the circuit
-		FullAdderGate fullAdder = new FullAdderGate();
 		Switch switch1 = new Switch();
 		Switch switch2 = new Switch();
 		Switch switch3 = new Switch();
+		switch3.turnOn();
+		InputPin input1 = new InputPin(switch1);
+	    InputPin input2 = new InputPin(switch2);
+	    InputPin input3 = new InputPin(switch3);
 		
-		//Set input B (switch2) as 1
-		switch3.toggleState();
+		//Components for the circuit
+		LogicGate fullAdder = new FullAdderGate(input1, input2, input3);
 		
-		//Create and set input objects
-		InputPin pinA = new InputPin();
-		pinA.setSource(switch1);
-		InputPin pinB = new InputPin();
-		pinB.setSource(switch2);
-		InputPin pinC = new InputPin();
-		pinC.setSource(switch3);
-		fullAdder.setPin(pinA, pinB, pinC);
-				
-		//Test if the output is false
+		//Test if outputs are false
 		Assert.assertTrue(fullAdder.getOutputValue(0)); //Sum
 		Assert.assertFalse(fullAdder.getOutputValue(1)); //Carry
+				
 	}
 	
 	@Test
 	public void Input010() {
-		//Components for the circuit
-		FullAdderGate fullAdder = new FullAdderGate();
 		Switch switch1 = new Switch();
 		Switch switch2 = new Switch();
 		Switch switch3 = new Switch();
-				
-		//Set input A (switch1) as 1
-		switch2.toggleState();
+		switch2.turnOn();
+
+		InputPin input1 = new InputPin(switch1);
+	    InputPin input2 = new InputPin(switch2);
+	    InputPin input3 = new InputPin(switch3);
 		
-		//Create and set input objects
-		InputPin pinA = new InputPin();
-		pinA.setSource(switch1);
-		InputPin pinB = new InputPin();
-		pinB.setSource(switch2);
-		InputPin pinC = new InputPin();
-		pinC.setSource(switch3);
-		fullAdder.setPin(pinA, pinB, pinC);
+		//Components for the circuit
+		LogicGate fullAdder = new FullAdderGate(input1, input2, input3);
 		
-		//Test if the output is false
+		//Test if outputs are false
 		Assert.assertTrue(fullAdder.getOutputValue(0)); //Sum
 		Assert.assertFalse(fullAdder.getOutputValue(1)); //Carry
 	}
 	
 	@Test
 	public void Input011() {
-		//Components for the circuit
-		HalfAdderGate halfAdder = new HalfAdderGate();
 		Switch switch1 = new Switch();
 		Switch switch2 = new Switch();
-						
-		//Set both inputs as 1
-		switch1.toggleState();
-		switch2.toggleState();
-				
-		//Create and set input objects
-		InputPin pinA = new InputPin();
-		pinA.setSource(switch1);
-		InputPin pinB = new InputPin();
-		pinB.setSource(switch2);
-		halfAdder.setPin(pinA, pinB);
-				
-		//Test if the output is true
-		Assert.assertFalse(halfAdder.getOutputValue(0)); //Sum
-		Assert.assertTrue(halfAdder.getOutputValue(1)); //Carry
+		Switch switch3 = new Switch();
+		switch1.turnOn();
+		switch2.turnOn();
+
+		InputPin input1 = new InputPin(switch1);
+	    InputPin input2 = new InputPin(switch2);
+	    InputPin input3 = new InputPin(switch3);
+		
+		//Components for the circuit
+		LogicGate fullAdder = new FullAdderGate(input1, input2, input3);
+		
+		//Test if outputs are false
+		Assert.assertFalse(fullAdder.getOutputValue(0)); //Sum
+		Assert.assertTrue(fullAdder.getOutputValue(1)); //Carry
 	}
 	
 	@Test
 	public void Input100() {
 		//Components for the circuit
-		HalfAdderGate halfAdder = new HalfAdderGate();
 		Switch switch1 = new Switch();
 		Switch switch2 = new Switch();
-						
-		//Set both inputs as 1
-		switch1.toggleState();
-		switch2.toggleState();
-				
-		//Create and set input objects
-		InputPin pinA = new InputPin();
-		pinA.setSource(switch1);
-		InputPin pinB = new InputPin();
-		pinB.setSource(switch2);
-		halfAdder.setPin(pinA, pinB);
-				
-		//Test if the output is true
-		Assert.assertFalse(halfAdder.getOutputValue(0)); //Sum
-		Assert.assertTrue(halfAdder.getOutputValue(1)); //Carry
+		Switch switch3 = new Switch();
+		switch1.turnOn();
+
+		InputPin input1 = new InputPin(switch1);
+	    InputPin input2 = new InputPin(switch2);
+	    InputPin input3 = new InputPin(switch3);
+		
+		//Components for the circuit
+		LogicGate fullAdder = new FullAdderGate(input1, input2, input3);
+		
+		//Test if outputs are false
+		Assert.assertTrue(fullAdder.getOutputValue(0)); //Sum
+		Assert.assertFalse(fullAdder.getOutputValue(1)); //Carry
 	}
 	
 	@Test
 	public void Input101() {
-		//Components for the circuit
-		HalfAdderGate halfAdder = new HalfAdderGate();
 		Switch switch1 = new Switch();
 		Switch switch2 = new Switch();
-						
-		//Set both inputs as 1
-		switch1.toggleState();
-		switch2.toggleState();
-				
-		//Create and set input objects
-		InputPin pinA = new InputPin();
-		pinA.setSource(switch1);
-		InputPin pinB = new InputPin();
-		pinB.setSource(switch2);
-		halfAdder.setPin(pinA, pinB);
-				
-		//Test if the output is true
-		Assert.assertFalse(halfAdder.getOutputValue(0)); //Sum
-		Assert.assertTrue(halfAdder.getOutputValue(1)); //Carry
+		Switch switch3 = new Switch();
+		switch1.turnOn();
+		switch3.turnOn();
+
+		InputPin input1 = new InputPin(switch1);
+	    InputPin input2 = new InputPin(switch2);
+	    InputPin input3 = new InputPin(switch3);
+		
+		//Components for the circuit
+		LogicGate fullAdder = new FullAdderGate(input1, input2, input3);
+		
+		//Test if outputs are false
+		Assert.assertFalse(fullAdder.getOutputValue(0)); //Sum
+		Assert.assertTrue(fullAdder.getOutputValue(1)); //Carry
+			
 	}
 	
 	@Test
 	public void Input110() {
-		//Components for the circuit
-		HalfAdderGate halfAdder = new HalfAdderGate();
 		Switch switch1 = new Switch();
 		Switch switch2 = new Switch();
-						
-		//Set both inputs as 1
-		switch1.toggleState();
-		switch2.toggleState();
-				
-		//Create and set input objects
-		InputPin pinA = new InputPin();
-		pinA.setSource(switch1);
-		InputPin pinB = new InputPin();
-		pinB.setSource(switch2);
-		halfAdder.setPin(pinA, pinB);
-				
-		//Test if the output is true
-		Assert.assertFalse(halfAdder.getOutputValue(0)); //Sum
-		Assert.assertTrue(halfAdder.getOutputValue(1)); //Carry
+		Switch switch3 = new Switch();
+		switch2.turnOn();
+		switch3.turnOn();
+
+		InputPin input1 = new InputPin(switch1);
+	    InputPin input2 = new InputPin(switch2);
+	    InputPin input3 = new InputPin(switch3);
+		
+		//Components for the circuit
+		LogicGate fullAdder = new FullAdderGate(input1, input2, input3);
+		
+		//Test if outputs are false
+		Assert.assertFalse(fullAdder.getOutputValue(0)); //Sum
+		Assert.assertTrue(fullAdder.getOutputValue(1)); //Carry
 	}
 	
 	@Test
 	public void Input111() {
-		//Components for the circuit
-		HalfAdderGate halfAdder = new HalfAdderGate();
 		Switch switch1 = new Switch();
 		Switch switch2 = new Switch();
-						
-		//Set both inputs as 1
-		switch1.toggleState();
-		switch2.toggleState();
-				
-		//Create and set input objects
-		InputPin pinA = new InputPin();
-		pinA.setSource(switch1);
-		InputPin pinB = new InputPin();
-		pinB.setSource(switch2);
-		halfAdder.setPin(pinA, pinB);
-				
-		//Test if the output is true
-		Assert.assertFalse(halfAdder.getOutputValue(0)); //Sum
-		Assert.assertTrue(halfAdder.getOutputValue(1)); //Carry
+		Switch switch3 = new Switch();
+		switch1.turnOn();
+		switch2.turnOn();
+		switch3.turnOn();
+
+		InputPin input1 = new InputPin(switch1);
+	    InputPin input2 = new InputPin(switch2);
+	    InputPin input3 = new InputPin(switch3);
+		
+		//Components for the circuit
+		LogicGate fullAdder = new FullAdderGate(input1, input2, input3);
+		
+		//Test if outputs are false
+		Assert.assertTrue(fullAdder.getOutputValue(0)); //Sum
+		Assert.assertTrue(fullAdder.getOutputValue(1)); //Carry
 	}
 
 }

@@ -1,11 +1,10 @@
 package model;
 
 public class OrGate extends LogicGate {
-	
-	public void setPin(InputPin pinA, InputPin pinB) {
-		pins.add(pinA);//eu botei aqui a mesma implementacao que agente uso pro getOutputValuer
-					   //que agente fez com lista pq ele pedia de entrada um index
-		pins.add(pinB);
+
+	public OrGate (InputPin inputPin, InputPin inputPin2) {
+		pins.add(inputPin);
+		pins.add(inputPin2);
 	}
 	
 	@Override

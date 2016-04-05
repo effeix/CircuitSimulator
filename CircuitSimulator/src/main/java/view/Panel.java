@@ -1,38 +1,75 @@
 package view;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.geom.*;
+import java.util.ArrayList;
 
 import javax.print.attribute.standard.OutputDeviceAssigned;
 import javax.swing.*;
 
+import controller.GateHandler;
+import model.AndGate;
+import model.LogicGate;
+import model.NotGate;
+import model.OrGate;
+import model.Switch;
+
 public class Panel extends JPanel implements ItemListener {
 	static final long serialVersionUID = 475623984138162L;
+
+	private JPanel switchBoxes = new JPanel(new GridLayout(3, 0));
+	private ArrayList<JCheckBox> switchList = new ArrayList<>();
+	private ArrayList<JCheckBox> outputList = new ArrayList<>();
+
 	
-	public static JCheckBox switch1 = new JCheckBox("Switch 1");
-	JCheckBox switch2 = new JCheckBox("Switch 2");
-	JCheckBox output = new JCheckBox("Output");
+	private JPanel outputPanel = new JPanel(new GridLayout(2,0));
 	
-	JPanel switchPanel = new JPanel(new GridLayout(2, 0));
-	JPanel outputPanel = new JPanel(new GridLayout(1,1));
+	private String[] gate_names = new String[]{"And","FullAdder","HalfAdder","Not","Or","Xor"};
+	private JComboBox<String> gates = new JComboBox<>(gate_names);
 	
-	String[] gate_names = new String[]{"And","FullAdder","HalfAdder","Not","Or","Xor"};
-	JComboBox<String> gates = new JComboBox<>(gate_names);
+	private GateHandler gateHandler;
+
+
+
 	
 	public Panel() {
 		super(new BorderLayout());
-		output.setEnabled(false);
-		switchPanel.add(switch1);
-		switchPanel.add(switch2);
-		outputPanel.add(output);
-		this.add(switchPanel, BorderLayout.LINE_START);
-		this.add(outputPanel, BorderLayout.LINE_END);
+
+		switchList.add(new JCheckBox("Switch 1"));
+		switchList.add(new JCheckBox("Switch 2"));
+		switchList.add(new JCheckBox("Switch 3"));
+		
+
+		outputList.add(new JCheckBox("Output 1"));
+		outputList.add(new JCheckBox("Output 2"));
+
+		
+		switchList.get(0).addItemListener(this);
+		switchList.get(1).addItemListener(this);
+		switchList.get(2).addItemListener(this);
+
+		gateHandler = new GateHandler(switchList, gates);
+
+		for (int i = 0; i<gateHandler.getLogicGate().getNumberOfInputPins();i++) {
+			switchBoxes.add(switchList.get(i));
+		}
+		
+		for (int i = 0; i < gateHandler.getLogicGate().getNumberOfOutputPins(); i++){
+			outputPanel.add(outputList.get(i));
+		}
+		
+		gates.addItemListener(this);
+		this.add(switchBoxes);
 		this.add(gates, BorderLayout.PAGE_END);
+		this.add(outputPanel, BorderLayout.LINE_END);
 	}
 	
 	public void paintComponent(Graphics g) {
+				
 		Graphics2D g2 = (Graphics2D) g;
 		
 		//Draw AndGate
@@ -43,6 +80,28 @@ public class Panel extends JPanel implements ItemListener {
 	@Override
 	public void itemStateChanged(ItemEvent e) {
 		
+		gateHandler.itemStateChanged(e, outputList);
+		
+		switchBoxes.removeAll();
+		outputPanel.removeAll();
+		this.remove(switchBoxes);
+		this.remove(outputPanel);
+		
+		for (int i = 0; i<gateHandler.getLogicGate().getNumberOfInputPins();i++) {
+			switchBoxes.add(switchList.get(i));
+		}
+		for (int i = 0; i < gateHandler.getLogicGate().getNumberOfOutputPins(); i++){
+			outputPanel.add(outputList.get(i));
+		}
+
+		switchBoxes.revalidate();
+		outputPanel.revalidate();
+		this.add(switchBoxes);
+		this.add(outputPanel, BorderLayout.LINE_END);
+		this.revalidate();
+		this.repaint();
 		
 	}
+
 }
+
