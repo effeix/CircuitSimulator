@@ -17,7 +17,7 @@ public class FullAdderGate extends LogicGate {
 
 		boolean[] out = new boolean[2];
 
-		//criando as portas lógicas
+		//criando as portas logicas
 
 		XorGate xor1 = new XorGate();
 		XorGate xor2 = new XorGate();
@@ -55,7 +55,7 @@ public class FullAdderGate extends LogicGate {
 		InputPin outOr = new InputPin();
 		outOr.setSource(or);
 
-		//array de saídas
+		//array de saidas
 
 		out[0] = xor2.getOutputValue(0);
 		out[1] = or.getOutputValue(0);
