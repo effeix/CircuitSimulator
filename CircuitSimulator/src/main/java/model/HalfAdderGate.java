@@ -16,7 +16,7 @@ public class HalfAdderGate extends LogicGate {
 	public boolean getOutputValue(int index) {
 		
 		xor = new XorGate(pins.get(0), pins.get(1));
-		and = new AndGate(pins.get(0), pins.get(1)));
+		and = new AndGate(pins.get(0), pins.get(1));
 		
 		outputs[0] = xor.getOutputValue(0);
 		outputs[1] = and.getOutputValue(0);
